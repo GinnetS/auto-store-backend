@@ -15,7 +15,7 @@ async function bootstrap() {
         .addBearerAuth()
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('api/docs', app, document);
+    swagger_1.SwaggerModule.setup('', app, document);
     const port = process.env.PORT || 3000;
     await app.listen(port);
     console.log(`Server running on http://localhost:${port}`);

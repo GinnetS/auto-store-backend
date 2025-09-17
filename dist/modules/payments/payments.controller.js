@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const payments_service_1 = require("./payments.service");
 const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const create_order_dto_1 = require("./dto/create-order.dto");
 let PaymentsController = class PaymentsController {
     constructor(payments) {
         this.payments = payments;
@@ -31,9 +32,10 @@ let PaymentsController = class PaymentsController {
 exports.PaymentsController = PaymentsController;
 __decorate([
     (0, common_1.Post)('create-order'),
+    (0, swagger_1.ApiBody)({ type: create_order_dto_1.CreateOrderDto }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_order_dto_1.CreateOrderDto]),
     __metadata("design:returntype", void 0)
 ], PaymentsController.prototype, "createOrder", null);
 __decorate([

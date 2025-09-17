@@ -1,7 +1,8 @@
 import { Body, Controller, Param, Post, UseGuards } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CreateOrderDto } from './dto/create-order.dto';
 
 @ApiTags('payments')
 @ApiBearerAuth()
@@ -10,8 +11,9 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 export class PaymentsController {
   constructor(private readonly payments: PaymentsService) {}
 
-  @Post('create-order')
-  createOrder(@Body() body: { items: Array<{ name: string; unit_amount: string; quantity: number }>; currency?: string }) {
+   @Post('create-order')
+  @ApiBody({ type: CreateOrderDto })
+  createOrder(@Body() body: CreateOrderDto) {
     return this.payments.createOrder(body.items, body.currency ?? 'USD');
   }
 

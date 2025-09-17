@@ -20,8 +20,8 @@ export class ProductsController {
   findAll(@Query() query: QueryProductsDto) { return this.service.findAll(query); }
 
   // detalle público
-  @Get(':idOrSlug')
-  findOne(@Param('idOrSlug') idOrSlug: string) { return this.service.findOne(idOrSlug); }
+  @Get(':id')
+  findOne(@Param('id') idOrSlug: string) { return this.service.findOne(idOrSlug); }
 
   // admin-only mutaciones
   @ApiBearerAuth()
